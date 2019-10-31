@@ -1,0 +1,7 @@
+<%-- Comentário Scriptlet --%>
+<%@ page pageEncoding="UTF-8" %>
+<!-- Comentário HTML  -->
+<div style="background: black; color: green">
+    <h1>MEU SITE</h1>
+    Aprendendo Java Web
+</div>
