@@ -5,12 +5,17 @@
  */
 package br.edu.iff.tp1.t2018.servlets;
 
+import br.edu.iff.tp1.t2018.entidades.Endereco;
+import br.edu.iff.tp1.t2018.entidades.Usuario;
+import br.edu.iff.tp1.t2018.utilidades.HibernateUtil;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.math.BigDecimal;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 /**
  *
@@ -31,8 +36,37 @@ public class Meu1oServlet extends HttpServlet {
             throws ServletException, IOException {
         String nome = request.getParameter("nome");
         String sobrenome = request.getParameter("sobrenome");
-        String nomeCompleto = nome+" "+sobrenome;
-        System.out.println("Nome completo: "+nomeCompleto);
+        String nomeCompleto = nome + " " + sobrenome;
+        System.out.println("Nome completo: " + nomeCompleto);
+        String senha = request.getParameter("senha");
+
+        String rg = request.getParameter("rg");
+        String cpf = request.getParameter("cpf");
+        String cpf2 = request.getParameter("cpf2");
+        
+        Usuario user = new Usuario();
+        user.setNome(nomeCompleto);
+        user.setSenha(senha);
+
+        user.setDocRg(rg);
+        if (cpf != null && cpf2 != null) {
+            user.setDocCpf(Long.parseLong(cpf+cpf2));
+        }
+
+        Double aleatorio = Math.random();
+        BigDecimal id = new BigDecimal(aleatorio);
+        user.setIdUsuario(id);
+        
+        Endereco endResidencial = new Endereco();
+        endResidencial.setUsuaIdUsuario(user);
+        user.getEnderecoCollection().add(endResidencial);
+
+        Session sessaoBD = HibernateUtil.getSession();
+        Transaction tr = sessaoBD.beginTransaction();
+        sessaoBD.save(user);
+        tr.commit();
+        sessaoBD.close();
+
         response.sendRedirect("testezinho.jsp");
     }
 

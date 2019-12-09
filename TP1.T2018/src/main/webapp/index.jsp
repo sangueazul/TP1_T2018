@@ -45,7 +45,7 @@
     <input type="text" name="sobrenome">
   </div>
   <br><br>
- <div>
+ <%--div>
     <label>Nascimento: </label>
     <label for="data">Data de nascimento: </label> 
     <input type="date" name="data">
@@ -101,7 +101,7 @@
         <option value="php">PHP</option> 
         <option value="go">Go</option> 
         </select>
-    </div>
+    </div--%>
   </fieldset>
   <fieldset>
     <legend>Dados de documentos</legend>
@@ -177,7 +177,7 @@
 <fieldset>
  <legend>Dados de login</legend>
  <table cellspacing="10">
-  <tr>
+  <!--tr>
    <td>
     <label for="email">E-mail: </label>
    </td>
@@ -201,7 +201,7 @@
    <td align="left">
     <input type="text" name="login">
    </td>
-  </tr>
+  </tr-->
   <tr>
    <td>
     <label for="senha">Senha: </label>

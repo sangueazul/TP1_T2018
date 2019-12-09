@@ -13,6 +13,7 @@
     </head>
     <body>
         <%@include file="WEB-INF/jspf/menutop.jspf" %>
-        <h2>Hello World! You really do exist, uh!</h2>
+        <h2>Parabéns, se você está vendo esta tela no navegador!</h2>
+        <sup>(ou será que não?)</sup>
     </body>
 </html>
