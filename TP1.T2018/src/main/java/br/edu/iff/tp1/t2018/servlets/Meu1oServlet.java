@@ -17,6 +17,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+
+
 /**
  *
  * @author samsung
@@ -44,6 +46,10 @@ public class Meu1oServlet extends HttpServlet {
         String cpf = request.getParameter("cpf");
         String cpf2 = request.getParameter("cpf2");
         
+    
+  
+        
+        
         Usuario user = new Usuario();
         user.setNome(nomeCompleto);
         user.setSenha(senha);
@@ -57,7 +63,29 @@ public class Meu1oServlet extends HttpServlet {
         BigDecimal id = new BigDecimal(aleatorio);
         user.setIdUsuario(id);
         
+
+        
+        
+        
+        String Rua = request.getParameter("Rua");
+        String numero = request.getParameter("Numero");
+        String Bairro = request.getParameter("Bairro");
+        String Estado = request.getParameter("Estado");
+        String Cidade = request.getParameter("Cidade");
+        String Cep = request.getParameter("Cep");
+        
         Endereco endResidencial = new Endereco();
+        user.setEnderecoCollection(enderecoCollection);
+        
+        if (Endereco!= null && Bairro!= null){
+            user.setEnderecoCollection(enderecoCollection);
+        }
+        }
+                
+          
+       
+       
+        
         endResidencial.setUsuaIdUsuario(user);
         user.getEnderecoCollection().add(endResidencial);
 
@@ -68,6 +96,8 @@ public class Meu1oServlet extends HttpServlet {
         sessaoBD.close();
 
         response.sendRedirect("testezinho.jsp");
+        
+        
     }
 
     /**
